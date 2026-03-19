@@ -216,6 +216,27 @@ pipeline{
             )
            }
        }
+		//hum extended email and normal email kyu use krte hain?
+		--------------------------------------------------------
+			Normal Email — Basic notifications:
+			***********************************
+			Manage Jenkins → Configure System → Email Notification
+			✅ Sirf basic email bhejta hai
+			✅ Build pass/fail pe notify karta hai
+			❌ HTML email nahi bana sakta
+			❌ Attachments nahi de sakta
+			❌ Conditional logic nahi hoti
+			❌ Custom template nahi bana sakta
+
+			Extended Email — Advanced notifications:
+			****************************************
+				Manage Jenkins → Configure System → Extended E-mail Notification
+				✅ HTML email bana sakta hai
+				✅ Attachments de sakta hai (trivy report, logs)
+				✅ Conditional logic hoti hai
+				✅ Custom templates bana sakta hai
+				✅ Multiple recipients alag alag conditions pe
+				✅ Build logs attach kar sakta hai
 
     }
 
