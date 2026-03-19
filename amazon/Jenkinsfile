@@ -24,6 +24,14 @@ pipeline{
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=amazon-prime-video \
                     -Dsonar.projectKey=amazon-prime-video '''
                 }
+									//Jenkins Tool Name = tumhari marzi ka koi bhi naam
+									//Binary File Name  = hamesha fixed "sonar-scanner" hoga
+									//Tool ka naam sirf Jenkins ke andar identify karne ke liye hota hai.
+									//Tumne apne phone ka naam rakha  →  "Mera Phone"
+									//Lekin company ka actual naam    →  "Samsung Galaxy S23
+									//Tum apne ghar mein "Mera Phone" bologe
+									//Lekin shop pe jaake "Mera Phone" maango toh nahi milega ❌
+									//Wahan "Samsung Galaxy S23" maangna padega ✅
             }
         }
         stage("quality gate"){
