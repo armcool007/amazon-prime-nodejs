@@ -50,6 +50,25 @@ pipeline{
             steps {
                 sh "trivy fs . > trivyfs.txt"
             }
+													//difference b/w fs scan and image scan:
+														//trivy fs — Sirf tumhara code/dependencies scan karta hai
+														//**********************************************************
+														//tumhara code
+											    		//	├── package.json        ← scan
+											    		//	├── requirements.txt    ← scan
+											    		//	├── source code files   ← scan
+											    		//	└── config files        ← scan
+														//trivy image — Puri Docker image scan karta hai
+														//**********************************************
+														//Docker Image
+											    		//	  ├── Base OS (ubuntu:20.04)     ← NEW - yeh fs me nahi tha
+														//    │     ├── openssl vulnerability
+														//    │     ├── libc vulnerability
+														//    │     └── kernel packages
+														//    ├── Runtime (node:18)          ← NEW - yeh fs me nahi tha
+														//    │     └── npm vulnerabilities
+														//    └── tumhara code               ← same jo fs me tha
+											
         }
         stage("Docker Build & Push"){
             steps{
