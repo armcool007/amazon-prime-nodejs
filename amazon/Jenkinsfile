@@ -40,6 +40,20 @@ pipeline{
                     waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
                 }
             } 
+									//Quality Gate ek pass/fail criteria hota hai jo SonarQube set karta hai!
+										//Tumhara code SonarQube pe gaya
+										//SonarQube ne analyze kiya
+										//Ab Quality Gate check karta hai:
+										//✅ PASSED → Pipeline aage badh sakti hai
+										//❌ FAILED → Pipeline rok do / warning do
+										//Quality Gate kya check karta hai:
+										//*********************************
+										//Criteria						Example
+										//Code Coverage					80% se kam nahi hona chahiye
+										//Bugs							0 critical bugs
+										//Vulnerabilities					0 critical security issues
+										//Code Smells						100 se kam
+										//Duplications					3% se kam
         }
         stage('Install Dependencies') {
             steps {
