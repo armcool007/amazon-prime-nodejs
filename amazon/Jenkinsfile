@@ -106,6 +106,79 @@ pipeline{
                 }
             }
         }
+										//Docker Scout alag perspective deta hai — Trivy se better recommendations aur Docker Hub integration hoti hai!
+										//-------------------------------------------------------------------------------------------------------------
+										//Trivy vs Docker Scout difference:
+										//*********************************
+																							//TrivyDocker 					Scout
+										//Vulnerabilities dhundta hai							✅							  ✅
+										//Fix suggestions deta hai								❌ Limited					  ✅ Detailed
+										//Better base image suggest karta hai					❌							  ✅
+										//Docker Hub se directly integrate						❌							  ✅
+										//SBOM (software bill of materials)						❌							  ✅
+										//================================
+										//Trivy sirf batata hai:
+										//CRITICAL CVE-2023-1234 found in openssl 1.1.1
+										//❌ Fix nahi batata
+										//❌ Better image suggest nahi karta
+										//Docker Scout batata hai:
+										//CRITICAL CVE-2023-1234 found in openssl 1.1.1
+										//✅ Update to openssl 1.1.2 to fix this
+										//✅ Use node:18-alpine instead of node:18
+										//(alpine me 10 vulnerabilities kam hain)
+										//--------------------------------------------
+										//quickview ka matlab:
+										//+++++++++
+										//groovydocker-scout quickview armcool004/amazon-app-con
+										//``
+										//`
+										//Summary deta hai ek nazar mein
+										//Image: armcool004/amazon-app-con
+										//CRITICAL : 2
+										//HIGH : 5
+										//MEDIUM : 10
+										//LOW : 3
+										//Fast overview - details nahi
+										//*****************************************
+										//cves ka matlab:
+										//+++++
+										//groovydocker-scout cves armcool004/amazon-app-con
+										//` `
+										//CVE = Common Vulnerabilities and Exposures
+										//Har vulnerability ki detail deta hai
+										//CVE-2023-1234
+										//Package : openssl 1.1.1
+										//Severity : CRITICAL
+										//Fix : upgrade to 1.1.2
+										//CVE-2023-5678
+										//Package : libc 2.31
+										//Severity : HIGH
+										//Fix : upgrade to 2.35
+										//*****************************************
+										//recommendations ka matlab:
+										//+++++++++++++++
+										//groovydocker-scout recommendations armcool004/amazon-app-con
+										//` `
+										//Better base image suggest karta hai
+										//Current image : node:18 (15 critical CVEs)
+										//Recommended : node:18-alpine (2 critical CVEs) ← use this
+										//Alternative : node:18-slim (5 critical CVEs)
+										//Yeh Trivy kabhi nahi batata ❌
+										//`
+										//Poora pipeline flow samjho: ``
+										//trivy fs → tumhara source code check karo
+										//↓
+										//SonarQube → code quality check karo
+										//↓
+										//Quality Gate → pass/fail decision lo
+										//↓
+										//Docker Build → image banao
+										//↓
+										//trivy image → image ki vulnerabilities dhundo
+										//↓
+										//Docker Scout → better fix aur recommendations lo ✅
+										//↓
+										//Docker Push → safe image push karo
 
         stage("TRIVY-docker-images"){
             steps{
