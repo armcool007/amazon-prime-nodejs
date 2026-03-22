@@ -6,6 +6,7 @@
       - targets:
           - http://prometheus.io      # Target to probe with HTTP.
           - http://IP:3000 # Target to probe with HTTPS.
+          - http://a57ed23f9c458412aa20a155221c48d2-1973915241.ap-south-1.elb.amazonaws.com/ #on which website is hosted.
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
