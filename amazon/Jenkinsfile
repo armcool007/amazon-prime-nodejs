@@ -240,7 +240,7 @@ pipeline{
 														Username: Your Gmail address
 														Password: Your Gmail password or App Password (for 2-factor authentication)
 														Use TLS: Checked
-														SMTP Port: 587
+														SMTP Port: 587 (for tls)
 														Reply-To Address: Your email address
 														Charset: UTF-8
 			//Extended Email — Advanced notifications:
@@ -255,7 +255,7 @@ pipeline{
 													//Extended Email Settings:
 													--------------------------
 														SMTP Server: smtp.gmail.com
-														SMTP Port: 465 (for tls)
+														SMTP Port: 465 (for ssl)
 														Use SSL: Checked	
 
     }
