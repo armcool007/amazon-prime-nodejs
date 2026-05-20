@@ -256,7 +256,9 @@ pipeline{
 													--------------------------
 														SMTP Server: smtp.gmail.com
 														SMTP Port: 465 (for ssl)
-														Use SSL: Checked	
+														Use SSL: Checked
+														in Advanced section:
+															Default user e-mail suffix: @gmail.com
 
     }
 
