@@ -254,7 +254,7 @@ pipeline{
 													//Extended Email Settings:
 													//--------------------------
 														//SMTP Server: smtp.gmail.com
-														//SMTP Port: 465 (for ssl) 
+														//SMTP Port: 465 (for ssl) OR you can USE tls,587 also. Maine dono basic and extended ko tls,587 me rakha chal raha hai.
 														//Use SSL: Checked
 														//in Advanced section:
 															//Default user e-mail suffix: @gmail.com
