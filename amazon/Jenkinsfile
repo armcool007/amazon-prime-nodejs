@@ -229,7 +229,20 @@ pipeline{
 			//❌ Attachments nahi de sakta
 			//❌ Conditional logic nahi hoti
 			//❌ Custom template nahi bana sakta
-
+													//Basic Email setup:
+													--------------------
+														Email Extension Plugin
+														xsuc kxeb xcvk xqkf
+														1. Basic Email Notification
+														SMTP Server: smtp.gmail.com
+														Email Suffix: @gmail.com (default user email domain)
+														SMTP Authentication: Enabled
+														Username: Your Gmail address
+														Password: Your Gmail password or App Password (for 2-factor authentication)
+														Use TLS: Checked
+														SMTP Port: 587
+														Reply-To Address: Your email address
+														Charset: UTF-8
 			//Extended Email — Advanced notifications:
 			//****************************************
 				//Manage Jenkins → Configure System → Extended E-mail Notification
@@ -239,6 +252,11 @@ pipeline{
 				//✅ Custom templates bana sakta hai
 				//✅ Multiple recipients alag alag conditions pe
 				//✅ Build logs attach kar sakta hai
+													//Extended Email Settings:
+													--------------------------
+														SMTP Server: smtp.gmail.com
+														SMTP Port: 465 (for tls)
+														Use SSL: Checked	
 
     }
 
