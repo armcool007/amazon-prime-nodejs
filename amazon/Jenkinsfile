@@ -195,29 +195,28 @@ pipeline{
 
     }
     post {
-    always {
-        script {
-            def buildStatus = currentBuild.currentResult
-            def buildUser = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')[0]?.userId ?: 'Github User'
-            
-            emailext (
-                subject: "Pipeline ${buildStatus}: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
+        always {
+            script {
+                def buildStatus = currentBuild.currentResult
+                def buildUser = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')[0]?.userId ?: 'Github User'
+                emailext (
+                    subject: "Pipeline ${buildStatus}: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: """
                     <p>This is a Jenkins amazon-prime-video CICD pipeline status.</p>
                     <p>Project: ${env.JOB_NAME}</p>
                     <p>Build Number: ${env.BUILD_NUMBER}</p>
                     <p>Build Status: ${buildStatus}</p>
                     <p>Started by: ${buildUser}</p>
-                    <p>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                """,
-                to: 'mohdaseemakram19@gmail.com',
-                from: 'mohdaseemakram19@gmail.com',
-                replyTo: 'mohdaseemakram19@gmail.com',
-                mimeType: 'text/html',
-                attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
-            )
-           }
-       }
+                    <p>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>""",
+                    to: 'intraday001@gmail.com',
+                    from: 'intraday001@gmail.com',
+                    replyTo: 'intraday001@gmail.com',
+                    mimeType: 'text/html',
+                    attachmentsPattern: '**/trivyFSscan.txt,**/trivydocimagescan.txt'
+                )
+            }
+        }
+    }
 		//hum extended email and normal email kyu use krte hain?
 		//--------------------------------------------------------
 			//Normal Email — Basic notifications:
@@ -230,19 +229,19 @@ pipeline{
 			//❌ Conditional logic nahi hoti
 			//❌ Custom template nahi bana sakta
 													//Basic Email setup:
-													--------------------
-														Email Extension Plugin
-														xsuc kxeb xcvk xqkf
-														1. Basic Email Notification
-														SMTP Server: smtp.gmail.com
-														Email Suffix: @gmail.com (default user email domain)
-														SMTP Authentication: Enabled
-														Username: Your Gmail address
-														Password: Your Gmail password or App Password (for 2-factor authentication)
-														Use TLS: Checked
-														SMTP Port: 587 (for tls)
-														Reply-To Address: Your email address
-														Charset: UTF-8
+													//--------------------
+														//Email Extension Plugin
+														//xsuc kxeb xcvk xqkf
+														//1. Basic Email Notification
+														//SMTP Server: smtp.gmail.com
+														//Email Suffix: @gmail.com (default user email domain)
+														//SMTP Authentication: Enabled
+														//Username: Your Gmail address
+														//Password: Your Gmail password or App Password (for 2-factor authentication)
+														//Use TLS: Checked
+														//SMTP Port: 587 (for tls)
+														//Reply-To Address: Your email address
+														//Charset: UTF-8
 			//Extended Email — Advanced notifications:
 			//****************************************
 				//Manage Jenkins → Configure System → Extended E-mail Notification
@@ -253,12 +252,15 @@ pipeline{
 				//✅ Multiple recipients alag alag conditions pe
 				//✅ Build logs attach kar sakta hai
 													//Extended Email Settings:
-													--------------------------
-														SMTP Server: smtp.gmail.com
-														SMTP Port: 465 (for ssl)
-														Use SSL: Checked
-														in Advanced section:
-															Default user e-mail suffix: @gmail.com
+													//--------------------------
+														//SMTP Server: smtp.gmail.com
+														//SMTP Port: 465 (for ssl) 
+														//Use SSL: Checked
+														//in Advanced section:
+															//Default user e-mail suffix: @gmail.com
+														//Credentials:
+														//and also have to give the "Credentials" --> manage jenkins -> security -> add credentials -> gmail id and password you get 															//from 2 step authentication.
+														//then simply select the Credentials you add in extended email.
 
     }
 
