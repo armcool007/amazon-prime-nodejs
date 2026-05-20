@@ -20,10 +20,11 @@ pipeline{
         }
         stage("Sonarqube Analysis "){
             steps{
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('SonarQube') {					
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=amazon-prime-video \
                     -Dsonar.projectKey=amazon-prime-video '''
                 }
+									//('SonarQube') --> ye name jo apne system me rakha hoga vohi use krna hai. Manage Jenkins -> System -> SonarQube Servers -> Name: SonarQube   ← YEH WALA NAME HAI!.
 									//Jenkins Tool Name = tumhari marzi ka koi bhi naam
 									//Binary File Name  = hamesha fixed "sonar-scanner" hoga
 									//Tool ka naam sirf Jenkins ke andar identify karne ke liye hota hai.
